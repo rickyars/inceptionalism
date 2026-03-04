@@ -1,0 +1,50 @@
+---
+const { pathname } = Astro.url;
+---
+
+<nav>
+  <a href="/" class="wordmark">[ ricky ]</a>
+  <div class="nav-links">
+    <a href="/" class:list={[{ active: pathname === '/' }]}>Work</a>
+    <a href="/about" class:list={[{ active: pathname === '/about' }]}>About</a>
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0 3rem;
+  }
+
+  .wordmark {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .wordmark:hover {
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a.active {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      padding: 1.5rem 0 2rem;
+    }
+
+    .nav-links {
+      gap: 1.25rem;
+    }
+  }
+</style>

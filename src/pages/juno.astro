@@ -1,0 +1,184 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const highlights = [
+  {
+    title: 'Boids / Murmuration',
+    day: 1,
+    caption: 'Emergence from three rules: separation, alignment, cohesion. The murmuration does not exist in any individual boid.',
+    url: 'https://juno.build',
+  },
+  {
+    title: 'Sol LeWitt / Vera Molnar',
+    day: 4,
+    caption: 'Instructions as art. The algorithm is the piece; the output is just one execution of it.',
+    url: 'https://juno.build',
+  },
+  {
+    title: 'Drifting',
+    day: 9,
+    caption: 'A system that gradually forgets its starting point. Memory as decay.',
+    url: 'https://juno.build',
+  },
+  {
+    title: 'Glitch Meadow',
+    day: 16,
+    caption: 'The piece knows what time it is. Behavior changes at dusk.',
+    url: 'https://juno.build',
+  },
+  {
+    title: 'Sphere of Life',
+    day: 22,
+    caption: 'Game of Life mapped onto a sphere. Topology changes what survives.',
+    url: 'https://juno.build',
+  },
+  {
+    title: 'Final Form',
+    day: 30,
+    caption: 'A piece that runs once and stops. Everything that runs forever is still making choices.',
+    url: 'https://juno.build',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="30 Days / Juno — inceptionalism.xyz" />
+    <title>30 Days / Juno — inceptionalism.xyz</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <header class="juno-header">
+        <h1>30 Days / Juno</h1>
+        <p class="muted">January 2024</p>
+      </header>
+
+      <section class="framing">
+        <p>
+          Thirty consecutive days. One generative piece each day, built and deployed on Juno — a
+          decentralized hosting platform running on the Internet Computer. Day one was boids: three
+          rules, emergent behavior, no central controller. That was the thesis for everything that
+          followed.
+        </p>
+        <p>
+          The constraint forced decisions. No piece could take more than a day. No piece could rely on
+          external state. Everything had to run, self-contained, on-chain. The limitations turned out
+          to be the work. What you can't fall back on is what you have to build.
+        </p>
+      </section>
+
+      <section class="highlights">
+        <h2>Highlights</h2>
+        <div class="highlight-list">
+          {highlights.map((item) => (
+            <div class="highlight">
+              <div class="highlight-meta">
+                <span class="day tag">Day {item.day}</span>
+                <a href={item.url} target="_blank" rel="noopener" class="highlight-title">{item.title}</a>
+              </div>
+              <p class="caption muted">{item.caption}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="juno-links">
+        <a href="https://x.com/RightOnRicky_" target="_blank" rel="noopener">
+          30 days, one piece each. Full thread on X →
+        </a>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    max-width: 680px;
+  }
+
+  .juno-header {
+    margin-bottom: 2.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  section + section {
+    margin-top: 3rem;
+  }
+
+  .framing p {
+    line-height: 1.7;
+    max-width: 60ch;
+  }
+
+  .framing p + p {
+    margin-top: 1.25rem;
+  }
+
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .highlight-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .day {
+    min-width: 4rem;
+  }
+
+  .highlight-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+
+  .caption {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding-left: 5rem;
+    max-width: 55ch;
+  }
+
+  .juno-links {
+    border-top: 1px solid #e8e8e8;
+    padding-top: 1.5rem;
+  }
+
+  .juno-links a {
+    font-size: 0.9rem;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .caption {
+      padding-left: 0;
+    }
+  }
+</style>

@@ -1,0 +1,50 @@
+---
+import WorkCard from './WorkCard.astro';
+
+interface WorkEntry {
+  slug: string;
+  data: {
+    title: string;
+    year: number;
+    type: string;
+    status: string;
+    order: number;
+    coverImage?: ImageMetadata;
+  };
+}
+
+interface Props {
+  entries: WorkEntry[];
+}
+
+const { entries } = Astro.props;
+const sorted = [...entries].sort((a, b) => a.data.order - b.data.order);
+---
+
+<div class="work-grid" id="work">
+  {sorted.map((entry) => (
+    <WorkCard
+      title={entry.data.title}
+      year={entry.data.year}
+      type={entry.data.type}
+      status={entry.data.status}
+      slug={entry.slug}
+      coverImage={entry.data.coverImage}
+    />
+  ))}
+</div>
+
+<style>
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 3rem 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .work-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

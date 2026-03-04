@@ -1,0 +1,116 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="About — inceptionalism.xyz" />
+    <title>About — inceptionalism.xyz</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <section class="intro">
+        <p>
+          The practice is generative art with a technical conscience. Not output — process. Each piece
+          has to run when you leave the room, and run for real: real inference, real transactions, real
+          compute. Authenticity here is technical, not emotional.
+        </p>
+      </section>
+
+      <section class="selected-work">
+        <h2>Selected work</h2>
+        <ul>
+          <li><a href="/work/confessional-booth">Confessional Booth</a></li>
+          <li><a href="/work/mining-protocol">Mining Protocol</a></li>
+          <li><a href="/work/valley-girls">Valley Girls</a></li>
+          <li><a href="/work/1-1s">1-1s</a></li>
+          <li><a href="/work/drifters">Drifters</a></li>
+        </ul>
+      </section>
+
+      <section class="statement">
+        <h2>Statement</h2>
+        <p>
+          The work starts from a simple constraint: the piece must run when you leave the room. Not simulate
+          running — actually run. The confessional booth runs real inference on real confessions. The mining
+          protocol submits real shares to a real pool. Authenticity here is technical, not emotional.
+        </p>
+        <p>
+          The recurring move is negation. Take a known object, apply boolean NOT, see what's left. The
+          scarcity that critiques scarcity. The confessional that confesses to the algorithm. The portrait
+          that is actually about the painter.
+        </p>
+        <p>
+          By day I manage population health across five regions. The grid, the metric, the measured. The
+          art practice exists in direct tension with that: unmeasured, autonomous, permanent. The best
+          pieces are the ones where those two selves can't be told apart.
+        </p>
+      </section>
+
+      <section class="colophon">
+        <p class="muted">
+          inceptionalism.xyz · rightonricky.eth · Ethereum mainnet · Foundation · Transient Labs
+        </p>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    max-width: 680px;
+  }
+
+  section + section {
+    margin-top: 3rem;
+  }
+
+  .intro p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 60ch;
+  }
+
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #666;
+    margin-bottom: 1.25rem;
+  }
+
+  .selected-work ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .selected-work a {
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+  .statement p {
+    line-height: 1.7;
+    max-width: 60ch;
+  }
+
+  .statement p + p {
+    margin-top: 1.25rem;
+  }
+
+  .colophon {
+    border-top: 1px solid #e8e8e8;
+    padding-top: 1.5rem;
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import WorkGrid from '../components/WorkGrid.astro';
+import '../styles/global.css';
+
+const allWork = await getCollection('work');
+const visible = allWork.filter((e) => e.data.status !== 'archived');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="inceptionalism.xyz — work by ricky" />
+    <title>inceptionalism.xyz</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <WorkGrid entries={visible} />
+    </main>
+    <Footer />
+  </body>
+</html>

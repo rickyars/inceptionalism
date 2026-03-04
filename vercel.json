@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/www.inceptionalism.xyz/(.*)",
+      "destination": "https://inceptionalism.xyz/$1",
+      "permanent": true
+    }
+  ]
+}

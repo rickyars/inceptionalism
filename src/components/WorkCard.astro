@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  year: number;
+  type: string;
+  status: string;
+  slug: string;
+  coverImage?: ImageMetadata;
+}
+
+const { title, year, type, status, slug, coverImage } = Astro.props;
+const isDev = status === 'in-development';
+const displayTag = isDev ? 'in development' : type;
+---
+
+<a href={`/work/${slug}`} class="work-card">
+  <div class="image-wrap">
+    {coverImage ? (
+      <Image src={coverImage} alt={title} width={600} height={450} />
+    ) : (
+      <div class="placeholder" />
+    )}
+  </div>
+  <div class="meta">
+    <span class="title">{title}</span>
+    <span class="info">
+      <span class="tag">{displayTag}</span>
+      <span class="year">{year}</span>
+    </span>
+  </div>
+</a>
+
+<style>
+  .work-card {
+    display: block;
+    text-decoration: none;
+  }
+
+  .work-card:hover .title {
+    text-decoration: underline;
+  }
+
+  .image-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f0f0f0;
+    margin-bottom: 0.75rem;
+  }
+
+  .image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #666;
+  }
+
+  .year {
+    font-size: 0.8rem;
+    color: #666;
+  }
+</style>
