@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # vercel
 .vercel/
+
+# assests
+public/juno/originals/
+public/juno/unused/

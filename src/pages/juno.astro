@@ -3,44 +3,197 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
-const highlights = [
+const groups = [
   {
-    title: 'Boids / Murmuration',
-    day: 1,
-    caption: 'Emergence from three rules: separation, alignment, cohesion. The murmuration does not exist in any individual boid.',
-    url: 'https://juno.build',
+    label: 'homage',
+    items: [
+      {
+        day: 2,
+        title: 'Rothko',
+        caption: 'Rothko ask "how much can you remove and still feel something?" Glitch does the same.',
+        image: '/juno/rothko.gif',
+        url: 'https://juno.transient.xyz/recipe/8a835c0b-481a-4f44-87e7-c47425d3c698/preview',
+      },
+      {
+        day: 3,
+        title: 'GRIFT-MAN',
+        caption: "XCOPY\'s Grifters substitute for Blinky, Pinky, Inky and Clyde in this vibe-coded version of Pac-Man.",
+        image: '/juno/GRIFT-MAN.gif',
+        url: 'https://juno.transient.xyz/recipe/d9d6e2a4-e123-4b69-bf9b-b9227692ef83/preview',
+      },
+      {
+        day: 5,
+        title: 'EYE-ROLLA',
+        caption: 'XCOPY\'s EYE-ROLLA remixed with user interaction: the eyes track your mouse or finger, a click makes him blink.',
+        image: '/juno/EYE-ROLLA.gif',
+        url: 'https://juno.transient.xyz/recipe/76094c23-02d8-4e98-84ea-301c83b8058e/preview',
+      },
+      {
+        day: 9,
+        title: 'No Right-click and Save As guy',
+        caption: "XCOPY\'s Right-click and Save As Guy wrapped in javascript - you literally cannot right-click and save.",
+        embed: 'https://juno.transient.xyz/recipe/77fd1693-fb9a-4bd5-ac09-a30d2d9df4a2/embed',
+        url: 'https://juno.transient.xyz/recipe/77fd1693-fb9a-4bd5-ac09-a30d2d9df4a2/preview',
+      },
+      {
+        day: 13,
+        title: 'Grand Skull Piano',
+        caption: "ACK spent two years and three months building a physical grand piano with a skull for a body, the FrankenSteinway. It debuted at an exhibit in September 2025, right in the middle of this experiment. This version exists only in cyberspace and is playable in your browser.",
+        embed: 'https://juno.transient.xyz/recipe/44124a63-6c5b-4695-9d1e-473b036e47cc/embed',
+        url: 'https://juno.transient.xyz/recipe/44124a63-6c5b-4695-9d1e-473b036e47cc/preview',
+      },
+      {
+        day: 25,
+        title: 'Sol LeWitt',
+        caption: 'Looking for inspiration on generative art, I stumbled across Sol LeWitt: a prompt engineer before prompt engineering was a thing. he wrote instructions; others executed. i wrote prompts; Juno executed.',
+        image: '/juno/sol-lewitt.png',
+        url: 'https://juno.transient.xyz/recipe/81549410-e7e5-4741-8fb3-29ee68a8811a/preview',
+      },
+      {
+        day: 26,
+        title: 'Vera Molnar',
+        caption: 'Vera Molnar was making recursive, rule-based drawings on early computers in the 1960s. #remixeverything.',
+        image: '/juno/vera-molnar-ii.gif',
+        url: 'https://juno.transient.xyz/recipe/5f25a2b2-dbaa-4502-adfb-8b28e3803df0/preview',
+      },
+    ],
   },
   {
-    title: 'Sol LeWitt / Vera Molnar',
-    day: 4,
-    caption: 'Instructions as art. The algorithm is the piece; the output is just one execution of it.',
-    url: 'https://juno.build',
+    label: 'emergence',
+    items: [
+      {
+        day: 1,
+        title: 'Boids',
+        caption: "boids is a system composed of three simple rules: separation, alignment, and cohesion. yet it can exhibit stunningly complex patterns. that's what made it the natural starting point.",
+        video: '/juno/boids.mp4',
+        url: 'https://juno.transient.xyz/recipe/01639e96-0b78-40cb-815b-cdb0578850c5/preview',
+      },
+      {
+        day: 6,
+        title: 'Lava Lamp',
+        caption: 'fluid simulation. metaball physics, slow collision, constant motion. nothing resolves.',
+        video: '/juno/lava-lamp.mp4',
+        url: 'https://juno.transient.xyz/recipe/7e63f7df-1bc8-498d-b863-802ca256a520/preview',
+      },
+      {
+        day: 7,
+        title: 'Three Body Problem',
+        caption: 'three bodies, mutual gravitational pull, no closed-form solution. the orbits are deterministic but unpredictable past a certain horizon. i made it to watch the chaos.',
+        video: '/juno/three-bodies.mp4',
+        url: 'https://juno.transient.xyz/recipe/991e56f6-9ea1-4b5f-a671-f3df507fa196/preview',
+      },
+      {
+        day: 8,
+        title: 'Life on Mobius / Life on Sphere',
+        caption: "Conway's Game of Life mapped onto a Mobius strip and onto a sphere. the rules don't change. the topology does. life running on a strange surface is strange life.",
+        video: '/juno/life-mobius.mp4',
+        url: 'https://juno.transient.xyz/recipe/683af1d7-1481-4996-a49f-8f4ee45d525a/preview',
+      },
+      {
+        day: 10,
+        title: 'Galaxy',
+        caption: "Conway's Game of Life mapped onto a Mobius strip and onto a sphere. the rules don't change. the topology does. life running on a strange surface is strange life.",
+        video: '/juno/life-mobius.mp4',
+        url: 'https://juno.transient.xyz/recipe/683af1d7-1481-4996-a49f-8f4ee45d525a/preview',
+      },
+      {
+        day: 16,
+        title: 'Murmuration',
+        caption: 'boids again, this time built after the look of a starling murmuration. turned out to be the most remixed piece of the whole experiment. four remixes. something about the movement landed.',
+        video: '/juno/murmuration.mp4',
+        url: 'https://juno.transient.xyz/recipe/ccc7d033-630e-4001-8107-81fcb57b630e/preview',
+      },
+      {
+        day: 17,
+        title: 'Pixel Flames',
+        caption: 'cellular automaton: each pixel checks its neighbors and decides whether to burn. the emergent result looks like fire even though no pixel knows what fire is.',
+        image: '/juno/pixel-flames.gif',
+        url: 'https://juno.transient.xyz/recipe/e61bbccd-2167-4952-a9e6-104f795379eb/preview',
+      },
+      {
+        day: 23,
+        title: 'Game of Life',
+        caption: "Game of Life with particle physics layered on top. the combination shouldn't work as well as it does.",
+        video: '/juno/game-of-life-ii.mp4',
+        url: 'https://juno.transient.xyz/recipe/6b52f061-6ece-4926-aec0-f423d3131d0d/preview',
+      },
+      {
+        day: 27,
+        title: 'Cellular Automata',
+        caption: "cellular automata. cell cycles through states. the patterns that emerge look like bacteria competing for territory. inspired by Patrick Amadon\'s noise project.",
+        image: '/juno/cellular-automata.gif',
+        url: 'https://juno.transient.xyz/recipe/439aa294-be6c-40c9-87e1-20acfc664ddd/preview',
+      },
+    ],
   },
   {
-    title: 'Drifting',
-    day: 9,
-    caption: 'A system that gradually forgets its starting point. Memory as decay.',
-    url: 'https://juno.build',
-  },
-  {
-    title: 'Glitch Meadow',
-    day: 16,
-    caption: 'The piece knows what time it is. Behavior changes at dusk.',
-    url: 'https://juno.build',
-  },
-  {
-    title: 'Sphere of Life',
-    day: 22,
-    caption: 'Game of Life mapped onto a sphere. Topology changes what survives.',
-    url: 'https://juno.build',
-  },
-  {
-    title: 'Final Form',
-    day: 30,
-    caption: 'A piece that runs once and stops. Everything that runs forever is still making choices.',
-    url: 'https://juno.build',
+    label: 'glitch + tools',
+    items: [
+      {
+        day: 11,
+        title: 'Glitch Meadow',
+        caption: "Breath of the Wild style grass in Juno, glitching and swaying in the wind.",
+        video: '/juno/glitch-meadow.mp4',
+        url: 'https://juno.transient.xyz/recipe/0fd7853b-b196-467b-8cce-70369e909376/preview',
+      },
+      {
+        day: 12,
+        title: 'ASDF Pixel Sort',
+        caption: "I've always loved pixel sorting but determining where to start and stop has always been a mystery to me. Some quick googling turned up ASDF pixel sort by Kim Asendorf. I have no idea why it's called ASDF.",
+        image: '/juno/asdf.png',
+        url: 'https://juno.transient.xyz/recipe/9e9fd374-1d7b-44ef-b639-c93076126144/preview',
+      },
+      {
+        day: 14,
+        title: 'Wigglegram',
+        caption: 'Organic physics applied to the Mona Lisa. Every pixel pulled by a different force. The face holds together longer than it should.',
+        image: '/juno/mona-lisa.gif',
+        url: 'https://juno.transient.xyz/recipe/c73df5a2-d6b8-44e7-ba59-8181bf865d9f/preview',
+      },
+      {
+        day: 19,
+        title: 'Glitch Frame',
+        caption: "Drag-and-drop frame for your digital art using cc0 glitch textures created by Patrick Amadon.",
+        image: '/juno/glitch-frame.gif',
+        url: 'https://juno.transient.xyz/recipe/12825208-29f5-46ab-bb40-4cf57154862c/preview',
+      },
+      {
+        day: 19,
+        title: 'Pixelify',
+        caption: "Image pixelization using brightness-based pixel sizing to create a unique effect.",
+        image: '/juno/pixelify.png',
+        url: 'https://juno.transient.xyz/recipe/1b8a13d6-8101-4201-b340-d0319db617b9/preview',
+      },
+      {
+        day: 22,
+        title: 'LCD Overlay',
+        caption: "Ben Strauss inspired this idea: turning art into time pieces. Drag-and-drop any image and the recipe overlays an LCD-style clock showing the current time.",
+        image: '/juno/timepiece.gif',
+        url: 'https://juno.transient.xyz/recipe/e6f73eac-7bea-4bda-b121-33665ceef03a/preview',
+      },
+      {
+        day: 24,
+        title: 'Edge Detect',
+        caption: 'My daughter is taking art and came home excited about contour drawing: finding the edges of a form without lifting your pencil. This was this inspiration.',
+        image: '/juno/edge-detect.gif',
+        url: 'https://juno.transient.xyz/recipe/e2d8fcae-d29d-4f06-a3fe-b5af98140947/preview',
+      },
+      {
+        day: 29,
+        title: 'drifting',
+        caption: 'Drag-and-drop your art. Particle physics pulls it apart: each pixel becomes an agent with velocity and mass. Let it drift away.',
+        video: '/juno/drifting.mp4',
+        url: 'https://juno.transient.xyz/recipe/e76309d9-bd50-48f6-aa0f-f56afc79fefa/preview',
+      },
+    ],
   },
 ];
+
+const coda = {
+  day: 30,
+  caption: "i had a lot of fun the last 30 nights. i wasn't sure i had 30 ideas in me. turns out, i did. there were a lot of false starts, half-finished ideas, failed attempts and deleted projects. here's what made it through.",
+  url: 'https://x.com/RightOnRicky_/status/1961067978532819132',
+};
 ---
 
 <!doctype html>
@@ -48,50 +201,81 @@ const highlights = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="30 Days / Juno — inceptionalism.xyz" />
-    <title>30 Days / Juno — inceptionalism.xyz</title>
+    <meta name="description" content="30 Days / Juno -- inceptionalism.xyz" />
+    <title>30 Days / Juno -- inceptionalism.xyz</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
     <Nav />
     <main>
-      <header class="juno-header">
+      <header class="page-header">
+        <p class="back"><a href="/experiments">← experiments</a></p>
         <h1>30 Days / Juno</h1>
-        <p class="muted">January 2024</p>
+        <p class="muted">Aug 28 – Sep 27, 2025</p>
       </header>
 
       <section class="framing">
         <p>
-          Thirty consecutive days. One generative piece each day, built and deployed on Juno — a
-          decentralized hosting platform running on the Internet Computer. Day one was boids: three
-          rules, emergent behavior, no central controller. That was the thesis for everything that
-          followed.
+          Day 1 was boids. Three rules: separation, alignment, cohesion. That wasn't an introduction
+          to the experiment. That was the reason for it.
         </p>
         <p>
-          The constraint forced decisions. No piece could take more than a day. No piece could rely on
-          external state. Everything had to run, self-contained, on-chain. The limitations turned out
-          to be the work. What you can't fall back on is what you have to build.
+          One piece per night for 30 days, built in Juno -- Transient Labs' AI-assisted coding tool
+          for p5.js and Three.js. The work moved through emergence, art history,
+          glitch, time-aware pieces, particle physics. False starts, deleted projects,
+          half-finished ideas. At the end: I wasn't sure I had 30 ideas in me. Turns out, I did.
         </p>
       </section>
 
-      <section class="highlights">
-        <h2>Highlights</h2>
-        <div class="highlight-list">
-          {highlights.map((item) => (
-            <div class="highlight">
-              <div class="highlight-meta">
-                <span class="day tag">Day {item.day}</span>
-                <a href={item.url} target="_blank" rel="noopener" class="highlight-title">{item.title}</a>
-              </div>
-              <p class="caption muted">{item.caption}</p>
+      {groups.map((group) => (
+        <section class="group">
+          <p class="group-label">{group.label}</p>
+          <div class="shelf-wrap">
+            <button class="shelf-arrow shelf-arrow-left" aria-label="scroll left">&#8592;</button>
+            <div class="shelf">
+              {group.items.map((item) => (
+                <div class="card">
+                  <div class="card-media">
+                    {item.embed ? (
+                      <iframe src={item.embed} loading="lazy" allow="autoplay;encrypted-media;gyroscope;picture-in-picture;accelerometer;camera;microphone;midi" allowfullscreen />
+                    ) : item.video ? (
+                      <video autoplay muted loop playsinline>
+                        <source src={item.video} type="video/mp4" />
+                      </video>
+                    ) : item.image ? (
+                      <img src={item.image} alt={item.title} loading="lazy" />
+                    ) : null}
+                    <div class="caption-overlay">
+                      <p>{item.caption}</p>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-title-row">
+                      <span class="card-title">{item.title}</span>
+                      {item.url && (
+                        <a href={item.url} target="_blank" rel="noopener" class="open-link">open →</a>
+                      )}
+                    </div>
+                    <span class="card-day">{String(item.day).padStart(2, '0')}</span>
+                    <p class="caption-mobile">{item.caption}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+            <button class="shelf-arrow shelf-arrow-right" aria-label="scroll right">&#8594;</button>
+          </div>
+        </section>
+      ))}
 
-      <section class="juno-links">
-        <a href="https://x.com/RightOnRicky_" target="_blank" rel="noopener">
-          30 days, one piece each. Full thread on X →
+      <div class="coda">
+        <span class="card-day">{String(coda.day).padStart(2, '0')}</span>
+        <p>{coda.caption}</p>
+        <a href={coda.url} target="_blank" rel="noopener">open thread →</a>
+      </div>
+
+      <section class="footer-links">
+        <a href="https://x.com/RightOnRicky_/status/1961067978532819132" target="_blank" rel="noopener">
+          Full experiment thread on X →
         </a>
       </section>
     </main>
@@ -101,11 +285,21 @@ const highlights = [
 
 <style>
   main {
-    max-width: 680px;
+    max-width: 960px;
   }
 
-  .juno-header {
+  .page-header {
     margin-bottom: 2.5rem;
+  }
+
+  .back {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .back a {
+    color: #666;
+    text-decoration: underline;
   }
 
   h1 {
@@ -114,8 +308,8 @@ const highlights = [
     margin-bottom: 0.25rem;
   }
 
-  section + section {
-    margin-top: 3rem;
+  .framing {
+    margin-bottom: 3.5rem;
   }
 
   .framing p {
@@ -127,58 +321,284 @@ const highlights = [
     margin-top: 1.25rem;
   }
 
-  h2 {
-    font-size: 0.75rem;
-    font-weight: 500;
+  /* Groups */
+
+  .group {
+    margin-bottom: 3rem;
+  }
+
+  .group-label {
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #666;
-    margin-bottom: 1.5rem;
+    letter-spacing: 0.1em;
+    color: #999;
+    margin-bottom: 0.75rem;
   }
 
-  .highlight-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+  /* Shelf */
 
-  .highlight-meta {
+  .shelf-wrap {
+    position: relative;
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+  }
+
+  .shelf {
+    flex: 1;
+    display: flex;
     gap: 1rem;
-    margin-bottom: 0.3rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 0.5rem;
+    cursor: grab;
   }
 
-  .day {
-    min-width: 4rem;
+  .shelf.dragging {
+    cursor: grabbing;
+    user-select: none;
   }
 
-  .highlight-title {
-    font-size: 0.95rem;
+  .shelf::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shelf-arrow {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    color: #444;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .shelf-arrow:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+  }
+
+  .shelf-arrow:disabled {
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  /* Cards */
+
+  .card {
+    flex: 0 0 280px;
+    width: 280px;
+  }
+
+  .card-media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #f0f0f0;
+    overflow: hidden;
+  }
+
+  .card-media video,
+  .card-media img,
+  .card-media iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: none;
+  }
+
+  .caption-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .caption-overlay p {
+    font-size: 0.78rem;
+    color: #fff;
+    font-style: italic;
+    line-height: 1.5;
+    max-width: none;
+    margin: 0;
+  }
+
+  .card:hover .caption-overlay {
+    opacity: 1;
+  }
+
+  .card-footer {
+    padding-top: 0.6rem;
+  }
+
+  .card-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
     font-weight: 500;
+  }
+
+  .open-link {
+    font-size: 0.75rem;
+    color: #666;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .card-day {
+    font-size: 0.75rem;
+    color: #999;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Mobile caption -- hidden on desktop, shown on mobile */
+  .caption-mobile {
+    display: none;
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+  }
+
+  /* Coda */
+
+  .coda {
+    border-top: 1px solid #e8e8e8;
+    padding-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    max-width: 60ch;
+  }
+
+  .coda p {
+    font-size: 0.9rem;
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+    max-width: none;
+  }
+
+  .coda a {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
     text-decoration: underline;
   }
 
-  .caption {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    padding-left: 5rem;
-    max-width: 55ch;
-  }
+  /* Footer links */
 
-  .juno-links {
+  .footer-links {
     border-top: 1px solid #e8e8e8;
     padding-top: 1.5rem;
+    margin-top: 0;
   }
 
-  .juno-links a {
+  .footer-links a {
     font-size: 0.9rem;
     text-decoration: underline;
   }
 
-  @media (max-width: 600px) {
-    .caption {
-      padding-left: 0;
+  /* Mobile */
+
+  @media (max-width: 640px) {
+    .card {
+      flex: 0 0 220px;
+      width: 220px;
+    }
+
+    .caption-overlay {
+      display: none;
+    }
+
+    .caption-mobile {
+      display: block;
+    }
+
+    .shelf-arrow {
+      display: none;
     }
   }
 </style>
+
+<script>
+  const SCROLL_AMOUNT = 300;
+
+  document.querySelectorAll('.shelf-wrap').forEach((wrap) => {
+    const shelf = wrap.querySelector('.shelf');
+    const btnLeft = wrap.querySelector('.shelf-arrow-left');
+    const btnRight = wrap.querySelector('.shelf-arrow-right');
+
+    if (!shelf || !btnLeft || !btnRight) return;
+
+    // Arrow buttons
+    btnLeft.addEventListener('click', () => {
+      shelf.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      shelf.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
+    });
+
+    // Update arrow disabled state
+    const updateArrows = () => {
+      btnLeft.disabled = shelf.scrollLeft <= 0;
+      btnRight.disabled = shelf.scrollLeft + shelf.clientWidth >= shelf.scrollWidth - 1;
+    };
+
+    shelf.addEventListener('scroll', updateArrows, { passive: true });
+    updateArrows();
+
+    // Drag to scroll
+    let isDragging = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    shelf.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX;
+      startScrollLeft = shelf.scrollLeft;
+      shelf.classList.add('dragging');
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const delta = e.pageX - startX;
+      shelf.scrollLeft = startScrollLeft - delta;
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      shelf.classList.remove('dragging');
+    });
+
+    // Prevent click on cards after drag
+    shelf.addEventListener('click', (e) => {
+      if (Math.abs(shelf.scrollLeft - startScrollLeft) > 5) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+  });
+</script>

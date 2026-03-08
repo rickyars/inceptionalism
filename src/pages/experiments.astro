@@ -1,0 +1,120 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const experiments = [
+  {
+    title: '30 Days / Juno',
+    description: 'Thirty daily generative pieces built with Juno (p5.js / Three.js). Boids, cellular automata, Sol LeWitt, time-aware pieces.',
+    date: 'Aug–Sep 2025',
+    url: '/juno',
+    external: false,
+  },
+];
+
+const repos = [
+  // Add GitHub repos here as: { title, description, url }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Experiments — inceptionalism.xyz" />
+    <title>Experiments — inceptionalism.xyz</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <header class="page-header">
+        <h1>Experiments</h1>
+      </header>
+
+      <section class="experiment-list">
+        {experiments.map((item) => (
+          <div class="experiment">
+            <div class="experiment-meta">
+              <span class="muted">{item.date}</span>
+            </div>
+            <a href={item.url} target={item.external ? '_blank' : '_self'} rel={item.external ? 'noopener' : undefined} class="experiment-title">
+              {item.title}
+            </a>
+            <p class="experiment-desc">{item.description}</p>
+          </div>
+        ))}
+      </section>
+
+      {repos.length > 0 && (
+        <section class="repo-list">
+          <h2>Repos</h2>
+          {repos.map((repo) => (
+            <div class="experiment">
+              <a href={repo.url} target="_blank" rel="noopener" class="experiment-title">{repo.title}</a>
+              <p class="experiment-desc">{repo.description}</p>
+            </div>
+          ))}
+        </section>
+      )}
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    max-width: 680px;
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  section + section {
+    margin-top: 3rem;
+  }
+
+  .experiment-list,
+  .repo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .experiment-meta {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .experiment-title {
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .experiment-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #444;
+    max-width: 55ch;
+  }
+</style>

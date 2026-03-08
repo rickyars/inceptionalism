@@ -1,0 +1,39 @@
+day 1 - boids
+day 2 - rothko
+day 3 - griftman
+day 4 - technical analysis
+day 5 - eye-rolla
+day 6 - lava lamp
+day 7 - three body problem
+day 8 - life on mobius / life on sphere
+day 9 - right-click save as guy
+day 10 - rubik's cube
+day 11 - glitch grass
+day 12 - asdf
+day 13 - ack piano
+day 14 - wigglegram
+day 15 - asdf ii
+day 16 - murmuration
+day 17 - pixel flame
+day 18 - glitch frame
+day 19 - pixelify
+day 20 - ascii torus
+day 21 - pixel sort
+day 22 - LCD overlay
+day 23 - game of life, animated
+day 24 - edge detect
+day 25 - sol lewitt
+day 26 - vera molnar
+day 27 - cellular automata
+day 28 - juno "suggestions"
+day 29 - drifting
+day 30 - all the half-starts
+
+
+<iframe src="https://juno.transient.xyz/recipe/8a835c0b-481a-4f44-87e7-c47425d3c698/embed" style="width: 100%; aspect-ratio: 16/9; height: auto; border: none;" loading="lazy" allow="autoplay;encrypted-media;gyroscope;picture-in-picture;accelerometer;camera;microphone;midi" allowfullscreen></iframe>
+
+<iframe src="https://juno.transient.xyz/recipe/76094c23-02d8-4e98-84ea-301c83b8058e/embed" style="width: 100%; aspect-ratio: 16/9; height: auto; border: none;" loading="lazy" allow="autoplay;encrypted-media;gyroscope;picture-in-picture;accelerometer;camera;microphone;midi" allowfullscreen></iframe>
+
+<iframe src="https://juno.transient.xyz/recipe/44124a63-6c5b-4695-9d1e-473b036e47cc/embed" style="width: 100%; aspect-ratio: 16/9; height: auto; border: none;" loading="lazy" allow="autoplay;encrypted-media;gyroscope;picture-in-picture;accelerometer;camera;microphone;midi" allowfullscreen></iframe>
+
+<iframe src="https://juno.transient.xyz/recipe/77fd1693-fb9a-4bd5-ac09-a30d2d9df4a2/embed" style="width: 100%; aspect-ratio: 16/9; height: auto; border: none;" loading="lazy" allow="autoplay;encrypted-media;gyroscope;picture-in-picture;accelerometer;camera;microphone;midi" allowfullscreen></iframe>

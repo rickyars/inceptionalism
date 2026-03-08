@@ -6,6 +6,7 @@ const { pathname } = Astro.url;
   <a href="/" class="wordmark">[ ricky ]</a>
   <div class="nav-links">
     <a href="/" class:list={[{ active: pathname === '/' }]}>Work</a>
+    <a href="/experiments" class:list={[{ active: pathname.startsWith('/experiments') || pathname === '/juno' }]}>Experiments</a>
     <a href="/about" class:list={[{ active: pathname === '/about' }]}>About</a>
   </div>
 </nav>

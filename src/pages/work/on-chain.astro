@@ -1,0 +1,310 @@
+---
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+const pieces = [
+  {
+    id: '01',
+    title: 'MINING_PROTOCOL',
+    year: 2025,
+    media: { type: 'video', src: '/on-chain/mining-protocol-cover.mp4' },
+    supporting: [],
+    text: `A self-contained HTML file. Open it and it mines Monero — real shares submitted to a real pool, hash rate and energy draw live in a cyberpunk terminal UI. Throttled to 25% CPU. The background is XCOPY's red pill/blue pill piece, which already had a matrix easter egg in the terminal before the art was chosen. The visual locked in because XCOPY's commentary on crypto awakening as extraction is the whole argument.
+
+The lineage: amadon embedding actual computer viruses in NFTs, encrypted and neutralized but present. The question that raised: what if instead of a dead virus, the NFT was actively extracting value right now? Monero specifically — private, untraceable, truly fungible — mining silently while you look at art about waking up.
+
+The piece runs. This page points to it.`,
+    links: [
+      { label: 'run the piece →', href: 'https://ipfs.io/ipfs/QmZgXRu4HSfgigpGQm9NVQi9uNe2Hqs21iupdDFvmkrptd/media' },
+      { label: 'secondary on OpenSea →', href: 'https://opensea.io/item/ethereum/0x5f2d99dad2c9d2ddce4164e84b39e51e9c9e4bdc/1' },
+    ],
+    note: null,
+  },
+  {
+    id: '02',
+    title: 'We',
+    year: 2025,
+    media: { type: 'image', src: '/on-chain/we-cover.gif' },
+    supporting: [],
+    text: `My grandmother went to confession every Saturday and we went with her, the grandchildren, fidgeting in the pew while she disappeared behind the curtain. She wasn't in there long. But she came out different, visibly lighter, like something had been lifted off her that we hadn't noticed she was carrying. We'd sit beside her then, saying our own penance in silence. The priest absolved but God only listened, forgiveness implied in the silence receiving you without flinching.
+
+    I haven't been to confession in decades. I doomscroll instead, which is its own kind of rosary, the same compulsive repetition, the same low hum of guilt. One night I stumbled into r/confessions and stayed for hours, recognizing something I couldn't name. I'd like to say what kept me there was empathy, but it was schadenfreude.
+
+    What drew me in wasn't any single confession but what they shared, the same grammar of shame across different lives. So I trained a model on them. One million confessions. When the first output came back garbled and almost-sensible, I felt what Dr. Frankenstein must have felt watching his monster open its eyes. Terrifying and beautiful at the same time.
+
+    The container had to be right. A screen glowing phosphor green out of total darkness, because we have always entered darkness to confess. Above it, a word in the script that carried God's word through the Middle Ages, hand copied in candlelight. An intentional anachronism, sophisticated generative technology imagined as something humming on an old IBM in a church basement.
+
+    The confessions it generates are not quite right. They require effort, a willingness to lean in and parse. But real confession was never clean either. We circled it, confessed adjacent to the sin. The model learned that too and returns it in fractured grammar. An echo of ourselves. You sit and watch and realize you are in the priest's chair and the booth at the same time. There is no absolution. You cannot forgive what you recognize in yourself.`,
+    links: [
+      { label: 'run the piece →', href: 'https://ipfs.io/ipfs/Qmf5wBZUZdQ93HPtTd3J2UaPxcNNes1EWAkaiCFbQyA3kq/media' },
+      { label: 'mint on Transient Labs →', href: 'https://www.transient.xyz/mint/we-confess'},
+    ],
+    note: 'Note: currently non-functional while weights are being updated.',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="On-Chain — inceptionalism.xyz" />
+    <title>On-Chain — inceptionalism.xyz</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <header class="page-header">
+        <div class="work-meta">
+          <span class="tag">on-chain</span>
+        </div>
+        <h1>On-Chain</h1>
+      </header>
+
+      <!-- Dot navigation -->
+      <nav class="dot-nav" aria-label="Piece navigation">
+        {pieces.map((piece, i) => (
+          <button class="dot" data-index={i} aria-label={piece.title} />
+        ))}
+      </nav>
+
+      <!-- Carousel -->
+      <div class="carousel" id="carousel">
+        {pieces.map((piece, i) => (
+          <article class="piece" data-index={i} aria-hidden={i !== 0}>
+            <div class="piece-inner">
+              <div class="piece-media">
+                {piece.media.type === 'video' ? (
+                  <video autoplay muted loop playsinline>
+                    <source src={piece.media.src} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img src={piece.media.src} alt={piece.title} loading={i === 0 ? 'eager' : 'lazy'} />
+                )}
+              </div>
+
+              <div class="piece-text">
+                <div class="piece-meta">
+                  <span class="piece-num">{String(i + 1).padStart(2, '0')} / {String(pieces.length).padStart(2, '0')}</span>
+                  <span class="muted">{piece.year}</span>
+                </div>
+                <h2>{piece.title}</h2>
+
+                <div class="prose">
+                  {piece.text.split('\n\n').map((para) => (
+                    <p>{para}</p>
+                  ))}
+                </div>
+
+                {piece.links && piece.links.length > 0 && (
+                  <div class="piece-links">
+                    {piece.links.map((link) => (
+                      <p class="piece-link">
+                        <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {piece.note && (
+                  <p class="piece-note muted">{piece.note}</p>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Prev / Next -->
+      <div class="carousel-nav">
+        <button id="prev" disabled>← prev</button>
+        <button id="next">next →</button>
+      </div>
+    </main>
+    <Footer />
+
+    <script>
+      const pieces = document.querySelectorAll('.piece');
+      const dots = document.querySelectorAll('.dot');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      let current = 0;
+
+      function show(index) {
+        pieces.forEach((p, i) => {
+          p.setAttribute('aria-hidden', String(i !== index));
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === index);
+        });
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === pieces.length - 1;
+        current = index;
+      }
+
+      prevBtn.addEventListener('click', () => { if (current > 0) show(current - 1); });
+      nextBtn.addEventListener('click', () => { if (current < pieces.length - 1) show(current + 1); });
+      dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+
+      show(0);
+    </script>
+  </body>
+</html>
+
+<style>
+  main {
+    max-width: 1200px;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .work-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  /* Dot nav */
+  .dot-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid #111;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .dot.active {
+    background: #111;
+  }
+
+  /* Carousel: only show active piece */
+  .piece {
+    display: none;
+  }
+
+  .piece[aria-hidden="false"] {
+    display: block;
+  }
+
+  .piece-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Media */
+  .piece-media img,
+  .piece-media video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Text */
+  .piece-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .piece-num {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #666;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose p {
+    line-height: 1.7;
+    max-width: 55ch;
+  }
+
+  .prose p + p {
+    margin-top: 1rem;
+  }
+
+  .piece-links {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .piece-link {
+    font-size: 0.85rem;
+  }
+
+  .piece-link a {
+    text-decoration: underline;
+    color: #111;
+  }
+
+  .piece-note {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-width: 55ch;
+  }
+
+  /* Prev/Next */
+  .carousel-nav {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+  }
+
+  .carousel-nav button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    color: #111;
+  }
+
+  .carousel-nav button:disabled {
+    color: #ccc;
+    text-decoration: none;
+    cursor: default;
+  }
+
+  /* Mobile */
+  @media (max-width: 800px) {
+    .piece-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

@@ -9,7 +9,7 @@ interface WorkEntry {
     type: string;
     status: string;
     order: number;
-    coverImage?: ImageMetadata;
+    cover?: string;
   };
 }
 
@@ -29,7 +29,7 @@ const sorted = [...entries].sort((a, b) => a.data.order - b.data.order);
       type={entry.data.type}
       status={entry.data.status}
       slug={entry.slug}
-      coverImage={entry.data.coverImage}
+      cover={entry.data.cover}
     />
   ))}
 </div>

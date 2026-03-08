@@ -1,0 +1,412 @@
+---
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+const pieces = [
+  {
+    id: '01',
+    title: '3.9 Seconds',
+    year: 2022,
+    media: { type: 'gif', src: '/1o1/01.gif' },
+    supporting: [],
+    text: `Created for Claire Silver's AI Art Contest. The title and subject allude to the fleeting nature of time and how, in the blink of an eye, an entire life can pass you by.
+
+    The looping portrait depicts a woman holding a mobile phone. In the beginning, she is young, eyes cast downward, focused on her phone in an all too familiar posture. As the image changes and the woman ages, she suddenly looks up, contemplation playing on her face. What is she thinking? Is she pondering her squandered youth? Or is she present and focused on the time remaining? Is her gaze distant, lost in thought? Or does she see the viewer, give them her full attention?`,
+    poem: {
+      author: 'lorepunk.eth',
+      lines: [
+        'A witch showed',
+        'me how my future',
+        'would go—the',
+        'first times I',
+        'watched, fear',
+        'gripped my shoulders,',
+        'then I noticed',
+        'the spaces between,',
+        'and understood',
+        'what remains',
+        'the same, old',
+        'and young,',
+        'is the will',
+        'to love, to watch,',
+        'to set right,',
+        'to live',
+      ],
+    },
+    note: "Finalist, Claire Silver's 2nd AI Art Contest.",
+  },
+  {
+    id: '02',
+    title: 'Suit-Clad Man in Endless Freefall',
+    year: 2023,
+    media: { type: 'gif', src: '/1o1/02.gif' },
+    supporting: ['/1o1/02-01.jpg', '/1o1/02-02.jpg'],
+    text: `A surrealist take on the passage of time and rat race-induced anxiety. Created in the spirit of Dalí, who was obsessed with dreams and the subconscious. Inspired by my own recurring dreams of falling.`,
+    poem: null,
+    note: 'Selected by curators Claire Silver and Oliver Halsman Rosenberg for CONTINUUM, Barcelona, September 27–30, 2023. The collection moved to IHAM Gallery, Paris, October 11–12, 2023.',
+  },
+  {
+    id: '03',
+    title: 'Portrait of a Process',
+    year: 2023,
+    media: { type: 'gif', src: '/1o1/03.gif' },
+    supporting: [],
+    text: `Pindar Van Arman refined a set of generative techniques and shared them openly with his collector base. I used those techniques as a starting point — not to depict Pindar as a person, but to render the mechanics of how he makes things.
+
+The model used here is a StyleGAN: a network that learns to generate images through continuous cycles of trial and error. The training was stopped deliberately before the model could resolve into clean output. The unfinished state is the point. What you see is the process mid-thought, not the conclusion.`,
+    poem: null,
+    note: null,
+  },
+  {
+    id: '04',
+    title: 'What Remains',
+    year: 2024,
+    media: { type: 'video', src: '/1o1/04.mp4' },
+    supporting: [],
+    text: `I remember, with peculiar clarity, the moment I first recognized my own absence. There I sat, day after day, orchestrating numbers that held meaning only to those who had assigned them value. The spreadsheets became mirrors reflecting not what was gained, but what was gradually being lost. My fingers moved with muscle memory across keys that promised efficiency but delivered something else entirely — a quiet dissolution of self.
+
+What you observe in this piece is not merely the representation of labor, but the documentation of a particular kind of forgetting. The grid lines that once organized my professional existence have begun to organize my interior life as well. There is a certain dignity in this surrender, I've come to believe. A nobility in maintaining perfect columns while one's creative spirit retreats into smaller and smaller cells, becoming finally a single point of data — precise, measurable, and utterly silent.
+
+Those who view this work may recognize something of themselves in it. The careful arrangement of boundaries. The perfect alignment of expectations. The muted colors of compromise. I offer no judgment on this condition, only witness. For we who live between the cells, there remains the question: what calculations might reveal the sum of all we've left uncounted?`,
+    poem: null,
+    note: "Finalist, Claire Silver's 8th AI Art Contest.",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="1-1s — inceptionalism.xyz" />
+    <title>1-1s — inceptionalism.xyz</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <header class="page-header">
+        <div class="work-meta">
+          <span class="tag">1-1</span>
+          <a href="https://opensea.io/collection/ai-x-ricky" target="_blank" rel="noopener" class="collection-link">collection on OpenSea →</a>
+        </div>
+        <h1>1-1s</h1>
+      </header>
+
+      <!-- Dot navigation -->
+      <nav class="dot-nav" aria-label="Piece navigation">
+        {pieces.map((piece, i) => (
+          <button class="dot" data-index={i} aria-label={piece.title} />
+        ))}
+      </nav>
+
+      <!-- Carousel -->
+      <div class="carousel" id="carousel">
+        {pieces.map((piece, i) => (
+          <article class="piece" data-index={i} aria-hidden={i !== 0}>
+            <div class="piece-inner">
+              <div class="piece-media">
+                {piece.media.type === 'video' ? (
+                  <div class="video-wrap">
+                    <video src={piece.media.src} autoplay loop muted playsinline id="main-video" />
+                    <button class="mute-toggle" id="mute-toggle" aria-label="Unmute">sound off</button>
+                  </div>
+                ) : (
+                  <img src={piece.media.src} alt={piece.title} loading={i === 0 ? 'eager' : 'lazy'} />
+                )}
+                {piece.supporting.length > 0 && (
+                  <div class="supporting">
+                    {piece.supporting.map((src) => (
+                      <img src={src} alt={`${piece.title} — supporting material`} loading="lazy" />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div class="piece-text">
+                <div class="piece-meta">
+                  <span class="piece-num">{String(i + 1).padStart(2, '0')} / {String(pieces.length).padStart(2, '0')}</span>
+                  <span class="muted">{piece.year}</span>
+                </div>
+                <h2>{piece.title}</h2>
+
+                <div class="prose">
+                  {piece.text.split('\n\n').map((para) => (
+                    <p>{para}</p>
+                  ))}
+                </div>
+
+                {piece.note && (
+                  <p class="piece-note muted">{piece.note}</p>
+                )}
+
+                {piece.poem && (
+                  <blockquote class="poem">
+                    <p class="poem-author muted">— {piece.poem.author}</p>
+                    {piece.poem.lines.map((line) => (
+                      <span class="poem-line">{line}<br /></span>
+                    ))}
+                  </blockquote>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Prev / Next -->
+      <div class="carousel-nav">
+        <button id="prev" disabled>← prev</button>
+        <button id="next">next →</button>
+      </div>
+    </main>
+    <Footer />
+
+    <script>
+      const pieces = document.querySelectorAll('.piece');
+      const dots = document.querySelectorAll('.dot');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      let current = 0;
+
+      function show(index) {
+        pieces.forEach((p, i) => {
+          p.setAttribute('aria-hidden', String(i !== index));
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === index);
+        });
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === pieces.length - 1;
+        current = index;
+      }
+
+      prevBtn.addEventListener('click', () => { if (current > 0) show(current - 1); });
+      nextBtn.addEventListener('click', () => { if (current < pieces.length - 1) show(current + 1); });
+      dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+
+      const video = document.getElementById('main-video');
+      const muteBtn = document.getElementById('mute-toggle');
+      if (video && muteBtn) {
+        muteBtn.addEventListener('click', () => {
+          video.muted = !video.muted;
+          muteBtn.textContent = video.muted ? 'sound off' : 'sound on';
+        });
+      }
+
+      show(0);
+    </script>
+  </body>
+</html>
+
+<style>
+  main {
+    max-width: 1200px;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .work-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .collection-link {
+    font-size: 0.8rem;
+    text-decoration: underline;
+    color: #666;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  /* Dot nav */
+  .dot-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid #111;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .dot.active {
+    background: #111;
+  }
+
+  /* Video */
+  .video-wrap {
+    position: relative;
+  }
+
+  .video-wrap video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .mute-toggle {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    color: #111;
+  }
+
+  .mute-toggle:hover {
+    background: #fff;
+  }
+
+  /* Carousel: only show active piece */
+  .piece {
+    display: none;
+  }
+
+  .piece[aria-hidden="false"] {
+    display: block;
+  }
+
+  .piece-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Media */
+  .piece-media img,
+  .piece-media video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .supporting {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .supporting img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Text */
+  .piece-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .piece-num {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #666;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose p {
+    line-height: 1.7;
+    max-width: 55ch;
+  }
+
+  .prose p + p {
+    margin-top: 1rem;
+  }
+
+  .piece-note {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-width: 55ch;
+  }
+
+  /* Poem */
+  .poem {
+    margin-top: 1.5rem;
+    border-left: 2px solid #e8e8e8;
+    padding-left: 1.25rem;
+  }
+
+  .poem-author {
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .poem-line {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    display: inline;
+  }
+
+  /* Prev/Next */
+  .carousel-nav {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+  }
+
+  .carousel-nav button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    color: #111;
+  }
+
+  .carousel-nav button:disabled {
+    color: #ccc;
+    text-decoration: none;
+    cursor: default;
+  }
+
+  /* Mobile */
+  @media (max-width: 800px) {
+    .piece-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .supporting {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

@@ -1,24 +1,22 @@
 ---
-import { Image } from 'astro:assets';
-
 interface Props {
   title: string;
   year: number;
   type: string;
   status: string;
   slug: string;
-  coverImage?: ImageMetadata;
+  cover?: string;
 }
 
-const { title, year, type, status, slug, coverImage } = Astro.props;
+const { title, year, type, status, slug, cover } = Astro.props;
 const isDev = status === 'in-development';
 const displayTag = isDev ? 'in development' : type;
 ---
 
 <a href={`/work/${slug}`} class="work-card">
   <div class="image-wrap">
-    {coverImage ? (
-      <Image src={coverImage} alt={title} width={600} height={450} />
+    {cover ? (
+      <img src={`/${cover}`} alt={title} loading="lazy" />
     ) : (
       <div class="placeholder" />
     )}
