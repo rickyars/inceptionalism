@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/www.inceptionalism.xyz/(.*)",
-      "destination": "https://inceptionalism.xyz/$1",
+      "source": "/www.remix-everything.xyz/(.*)",
+      "destination": "https://remix-everything.xyz/$1",
       "permanent": true
     }
   ]

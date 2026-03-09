@@ -4,7 +4,7 @@ const work = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    year: z.number(),
+    year: z.union([z.number(), z.string()]).optional(),
     type: z.enum(['1-1', 'collection', 'collab', 'performance', 'in-development']),
     status: z.enum(['released', 'in-development', 'archived']),
     tags: z.array(z.string()).default([]),

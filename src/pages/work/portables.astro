@@ -50,8 +50,8 @@ The piece runs. This page points to it.`,
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="On-Chain — inceptionalism.xyz" />
-    <title>On-Chain — inceptionalism.xyz</title>
+    <meta name="description" content="Portables — remix-everything.xyz" />
+    <title>Portables — remix-everything.xyz</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
@@ -59,9 +59,9 @@ The piece runs. This page points to it.`,
     <main>
       <header class="page-header">
         <div class="work-meta">
-          <span class="tag">on-chain</span>
+          <span class="tag">portables</span>
         </div>
-        <h1>On-Chain</h1>
+        <h1>Portables</h1>
       </header>
 
       <!-- Dot navigation -->
@@ -84,6 +84,10 @@ The piece runs. This page points to it.`,
                 ) : (
                   <img src={piece.media.src} alt={piece.title} loading={i === 0 ? 'eager' : 'lazy'} />
                 )}
+                <div class="carousel-nav">
+                  <button class="prev" disabled>← prev</button>
+                  <button class="next">next →</button>
+                </div>
               </div>
 
               <div class="piece-text">
@@ -118,19 +122,14 @@ The piece runs. This page points to it.`,
         ))}
       </div>
 
-      <!-- Prev / Next -->
-      <div class="carousel-nav">
-        <button id="prev" disabled>← prev</button>
-        <button id="next">next →</button>
-      </div>
     </main>
     <Footer />
 
     <script>
       const pieces = document.querySelectorAll('.piece');
       const dots = document.querySelectorAll('.dot');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
+      const prevBtns = document.querySelectorAll('.prev');
+      const nextBtns = document.querySelectorAll('.next');
       let current = 0;
 
       function show(index) {
@@ -140,13 +139,13 @@ The piece runs. This page points to it.`,
         dots.forEach((d, i) => {
           d.classList.toggle('active', i === index);
         });
-        prevBtn.disabled = index === 0;
-        nextBtn.disabled = index === pieces.length - 1;
+        prevBtns.forEach((b) => { b.disabled = index === 0; });
+        nextBtns.forEach((b) => { b.disabled = index === pieces.length - 1; });
         current = index;
       }
 
-      prevBtn.addEventListener('click', () => { if (current > 0) show(current - 1); });
-      nextBtn.addEventListener('click', () => { if (current < pieces.length - 1) show(current + 1); });
+      prevBtns.forEach((btn) => btn.addEventListener('click', () => { if (current > 0) show(current - 1); }));
+      nextBtns.forEach((btn) => btn.addEventListener('click', () => { if (current < pieces.length - 1) show(current + 1); }));
       dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
 
       show(0);

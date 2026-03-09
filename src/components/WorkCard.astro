@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  year: number;
+  year?: number | string;
   type: string;
   status: string;
   slug: string;
@@ -25,7 +25,7 @@ const displayTag = isDev ? 'in development' : type;
     <span class="title">{title}</span>
     <span class="info">
       <span class="tag">{displayTag}</span>
-      <span class="year">{year}</span>
+      {year && <span class="year">{year}</span>}
     </span>
   </div>
 </a>

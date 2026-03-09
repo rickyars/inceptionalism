@@ -26,8 +26,8 @@ const isVideo = (src: string) => src.endsWith('.mp4') || src.endsWith('.webm');
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={`${title} — inceptionalism.xyz`} />
-    <title>{title} — inceptionalism.xyz</title>
+    <meta name="description" content={`${title} — remix-everything.xyz`} />
+    <title>{title} — remix-everything.xyz</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
@@ -50,7 +50,7 @@ const isVideo = (src: string) => src.endsWith('.mp4') || src.endsWith('.webm');
           <header class="work-header">
             <div class="work-meta">
               <span class="tag">{isDev ? 'in development' : type}</span>
-              <span class="year muted">{year}</span>
+              {year && <span class="year muted">{year}</span>}
               {collab && <span class="muted">w/ {collab}</span>}
             </div>
             <h1>{title}</h1>
